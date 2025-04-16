@@ -15,13 +15,16 @@ module.exports = ({ env }) => {
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
-    connection: {
-      host: env('DATABASE_HOST', '157.180.76.148'),
-      port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'strapi_production'),
-      user: env('DATABASE_USERNAME', 'David'),
-      password: env('DATABASE_PASSWORD', 'llmstrapi'), // Ensure this is set as a string
-      ssl: false, // Disable SSL for local PostgreSQL, enable for production
+    postgres: {  // PostgreSQL connection setup
+      connection: {
+        host: env('DATABASE_HOST', 'postgresql+ssh://ploi@157.180.76.148/ploi@127.0.0.1/strapi_production?name=strapi-project-manual-setup&usePrivateKey=true'),  // Use the correct host for your database (e.g., IP address or hostname)
+        port: env.int('DATABASE_PORT', 5432),  // Default PostgreSQL port
+        database: env('DATABASE_NAME', 'strapi_production'),
+        user: env('DATABASE_USERNAME', 'David'),  // Your PostgreSQL username
+        password: env('DATABASE_PASSWORD', 'llmstrapi'),  // Your PostgreSQL password
+        ssl: env.bool('DATABASE_SSL', true),  // Set to `true` for SSL connections in production
+      },
+      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },
   };
 
