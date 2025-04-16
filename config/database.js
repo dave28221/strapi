@@ -23,7 +23,7 @@ module.exports = ({ env }) => {
         database: env('DATABASE_NAME', 'strapi_production'),
         user: env('DATABASE_USERNAME', 'David'),
         password: env('DATABASE_PASSWORD', 'llm202'),
-        ssl: true, // 👈 disable SSL for local PostgreSQL
+        ssl: false, // 👈 disable SSL for local PostgreSQL
         schema: env('DATABASE_SCHEMA', 'public'),
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
