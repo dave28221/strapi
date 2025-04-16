@@ -17,13 +17,13 @@ module.exports = ({ env }) => {
     },
     postgres: {
       connection: {
-        connectionString: env('DATABASE_URL'),
+        connectionString: env('postgresql+ssh://ploi@157.180.76.148/ploi@127.0.0.1/strapi_production?name=strapi-project-manual-setup&usePrivateKey=true'),
         host: env('DATABASE_HOST', '127.0.0.1'),
         port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: false, // 👈 disable SSL for local PostgreSQL
+        database: env('DATABASE_NAME', 'strapi_production'),
+        user: env('DATABASE_USERNAME', 'David'),
+        password: env('DATABASE_PASSWORD', 'llm202'),
+        ssl: true, // 👈 disable SSL for local PostgreSQL
         schema: env('DATABASE_SCHEMA', 'public'),
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
