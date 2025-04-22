@@ -13,7 +13,7 @@ module.exports = {
         DATABASE_PORT: '5432',
         DATABASE_NAME: 'strapi_production',
         DATABASE_USERNAME: 'David',
-        DATABASE_PASSWORD: 'llmstrapi',
+        DATABASE_PASSWORD: 'llm202',
         DATABASE_SSL: 'false', // Set true if you want to use SSL
         JWT_SECRET: 'nB68jUfziXuNXvCGHSl+7g==',
         STRAPI_ADMIN_BACKEND_URL: 'https://liftlegalwp.com.au/admin',
