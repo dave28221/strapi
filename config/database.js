@@ -4,7 +4,7 @@ module.exports = ({ env }) => {
   const connections = {
     postgres: {
       connection: {
-        host: env('DATABASE_HOST', 'db'),            // default to 'db' in Docker
+        host: env('DATABASE_HOST', 'strapi-postgres'),            // default to 'db' in Docker
         port: env.int('DATABASE_PORT', 5432),
         database: env('DATABASE_NAME', 'strapi'),
         user: env('DATABASE_USERNAME', 'strapiuser'),
