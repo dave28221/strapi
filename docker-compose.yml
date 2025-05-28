@@ -24,7 +24,7 @@ services:
       DATABASE_PORT:     5432
       DATABASE_NAME:     postgresql-database            # ← match POSTGRES_DB above
       DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: : L39KNym5x4wmrwwqIadzI2DN7gFL0W6uq5F5T8iNNxwZGiloyffx58muv4vSekf2
+      DATABASE_PASSWORD:  L39KNym5x4wmrwwqIadzI2DN7gFL0W6uq5F5T8iNNxwZGiloyffx58muv4vSekf2
       NODE_ENV:          production
     volumes:
       - ./public:/app/public
