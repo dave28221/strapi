@@ -7,7 +7,7 @@ services:
       - '1337:1337'
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: localhost
+      DATABASE_HOST: db                # <-- Use service name here
       DATABASE_PORT: 5432
       DATABASE_NAME: strapi
       DATABASE_USERNAME: strapiuser
@@ -22,7 +22,7 @@ services:
     image: postgres:16
     restart: always
     environment:
-      DATABASE_USERNAME: strapiuser
+      POSTGRES_USER: strapiuser       # <-- Correct env var for postgres username
       POSTGRES_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
       POSTGRES_DB: strapi
     volumes:
