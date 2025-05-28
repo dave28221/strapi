@@ -1,3 +1,5 @@
+
+console.log('DATABASE_HOST:', env('DATABASE_HOST'));
 module.exports = ({ env }) => {
   const client = env('DATABASE_CLIENT', 'postgres');
 
