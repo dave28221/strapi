@@ -4,11 +4,11 @@ module.exports = ({ env }) => {
   const connections = {
     postgres: {
       connection: {
-        host: env('DATABASE_HOST', 'strapi-postgres'),            // default to 'db' in Docker
+        host: env('DATABASE_HOST', 'coolify-db'),            // default to 'db' in Docker
         port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapiuser'),
-        password: env('DATABASE_PASSWORD', 'tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2'),
+        database: env('DATABASE_NAME', 'postgresql-database'),
+        user: env('DATABASE_USERNAME', 'postgres'),
+        password: env('DATABASE_PASSWORD', 'L39KNym5x4wmrwwqIadzI2DN7gFL0W6uq5F5T8iNNxwZGiloyffx58muv4vSekf2),
         ssl: env.bool('DATABASE_SSL', false),
       },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
