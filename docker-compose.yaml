@@ -18,7 +18,7 @@ services:
       - ./src:/app/src
       - ./public/uploads:/app/public/uploads
     ports:
-      - "1337:1337"
+      - "1338:1338"
 
 volumes:
   strapi-data:
