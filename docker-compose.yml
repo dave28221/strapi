@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  strapi:
+    build: .
+    ports:
+      - '1337:1337'
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapiuser
+      DATABASE_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
+      NODE_ENV: production
+    depends_on:
+      - db
+    volumes:
+      - ./public:/app/public
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      DATABASE_USERNAME: strapiuser
+      POSTGRES_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
+      POSTGRES_DB: strapi
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
