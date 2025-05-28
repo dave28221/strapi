@@ -24,7 +24,7 @@ services:
     environment:
       POSTGRES_USER: strapiuser       # <-- Correct env var for postgres username
       POSTGRES_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
-      POSTGRES_DB: strapi
+      POSTGRES_DB: strapi-postgres
     volumes:
       - db_data:/var/lib/postgresql/data
 
