@@ -1,32 +1,33 @@
-version: '3'
+version: '3.8'
 
 services:
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER:     strapiuser
+      POSTGRES_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
+      POSTGRES_DB:       strapi            # ← match this to DATABASE_NAME below
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
   strapi:
     build: .
+    depends_on:
+      - db
     ports:
       - '1337:1337'
     environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_HOST: strapi-postgres                # <-- Use service name here
-      DATABASE_PORT: 5432
-      DATABASE_NAME: strapi
+      DATABASE_CLIENT:   postgres
+      DATABASE_HOST:     db                # ← use the service name
+      DATABASE_PORT:     5432
+      DATABASE_NAME:     strapi            # ← match POSTGRES_DB above
       DATABASE_USERNAME: strapiuser
       DATABASE_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
-      NODE_ENV: production
-    depends_on:
-      - db
+      NODE_ENV:          production
     volumes:
       - ./public:/app/public
-
-  db:
-    image: postgres:16
-    restart: always
-    environment:
-      POSTGRES_USER: strapiuser       # <-- Correct env var for postgres username
-      POSTGRES_PASSWORD: tkNHJhXLNDS5GcRbH61DDSkQ6chE17SHgQprn8ghlsq1P6hUQlQTydF11cQajPt2
-      POSTGRES_DB: strapi-postgres
-    volumes:
-      - db_data:/var/lib/postgresql/data
 
 volumes:
   db_data:
