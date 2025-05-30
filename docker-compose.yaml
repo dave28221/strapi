@@ -1,18 +1,6 @@
 version: "3"
 
 services:
-  postgres:
-    image: postgres:16
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${DATABASE_NAME}
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
   strapi:
     build: .
     image: strapi:latest
@@ -20,11 +8,11 @@ services:
     env_file: ./.env
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: postgres       # Use the service name, NOT 127.0.0.1
+      DATABASE_HOST: 
       DATABASE_PORT: 5432
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: postgresql
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: fU53YmzYXQnf5lmxIrO6rbeqSskiJqcvEL67APxBlpNXGcN1zAKYt7Kv24OlDmJL
       NODE_ENV: production
     volumes:
       - ./config:/app/config
@@ -32,8 +20,3 @@ services:
       - ./public/uploads:/app/public/uploads
     ports:
       - "1337:1337"
-    depends_on:
-      - postgres
-
-volumes:
-  postgres-data:
