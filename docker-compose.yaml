@@ -8,7 +8,7 @@ services:
     env_file: ./.env
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: swgokoggckkc44cs8s8wc4so   # Postgres container name from Coolify
+      DATABASE_HOST: swgokoggckkc44cs8s8wc4so  # Postgres container name
       DATABASE_PORT: 5432
       DATABASE_NAME: postgresql
       DATABASE_USERNAME: postgres
@@ -20,3 +20,8 @@ services:
       - ./public/uploads:/app/public/uploads
     ports:
       - "1337:1337"
+
+networks:
+  default:
+    external:
+      name: coolify
