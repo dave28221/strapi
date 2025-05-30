@@ -8,7 +8,8 @@ services:
     env_file: ./.env
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: 
+      # Use the actual Postgres container name here for internal Docker network DNS resolution:
+      DATABASE_HOST: swgokoggckkc44cs8s8wc4so
       DATABASE_PORT: 5432
       DATABASE_NAME: postgresql
       DATABASE_USERNAME: postgres
@@ -20,3 +21,23 @@ services:
       - ./public/uploads:/app/public/uploads
     ports:
       - "1337:1337"
+    depends_on:
+      - postgres # remove if Postgres is managed outside this compose
+
+# No postgres service here because you said Coolify manages it externally.
+
+# Optional: If you want to add postgres here (not recommended if Coolify runs it)
+# postgres:
+#   image: postgres:16-alpine
+#   restart: unless-stopped
+#   environment:
+#     POSTGRES_DB: postgresql
+#     POSTGRES_USER: postgres
+#     POSTGRES_PASSWORD: fU53YmzYXQnf5lmxIrO6rbeqSskiJqcvEL67APxBlpNXGcN1zAKYt7Kv24OlDmJL
+#   volumes:
+#     - postgres-data:/var/lib/postgresql/data
+#   ports:
+#     - "5432:5432"
+#
+# volumes:
+#   postgres-data:
