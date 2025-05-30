@@ -1,14 +1,14 @@
-version: "3"
+version: "3.8"
 
 services:
   strapi:
     build: .
     image: strapi:latest
     restart: unless-stopped
-    env_file: ./.env
+    env_file: .env
     environment:
       DATABASE_CLIENT: postgres
-      DATABASE_HOST: swgokoggckkc44cs8s8wc4so  # Postgres container name
+      DATABASE_HOST: swgokoggckkc44cs8s8wc4so  # Must match actual Postgres container name in Coolify
       DATABASE_PORT: 5432
       DATABASE_NAME: postgresql
       DATABASE_USERNAME: postgres
@@ -20,8 +20,9 @@ services:
       - ./public/uploads:/app/public/uploads
     ports:
       - "1337:1337"
+    networks:
+      - coolify
 
 networks:
-  default:
-    external:
-      name: coolify
+  coolify:
+    external: true
