@@ -10,7 +10,7 @@ services:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: swgokoggckkc44cs8s8wc4so  # Must match actual Postgres container name in Coolify
       DATABASE_PORT: 5432
-      DATABASE_NAME: postgresql
+      DATABASE_NAME: postgres
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: fU53YmzYXQnf5lmxIrO6rbeqSskiJqcvEL67APxBlpNXGcN1zAKYt7Kv24OlDmJL
       NODE_ENV: production
