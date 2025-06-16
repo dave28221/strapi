@@ -19,6 +19,8 @@ services:
       - ./public/uploads:/app/public/uploads
     ports:
       - "1338:1338"
+    depends_on:
+      - postgres
     networks:
       - coolify
     labels:
@@ -27,6 +29,21 @@ services:
       - "traefik.http.routers.strapi.entrypoints=websecure"
       - "traefik.http.routers.strapi.tls=true"
       - "traefik.http.services.strapi.loadbalancer.server.port=1338"
+
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bEmxKxXHUhYsvQ8SyR35er2NtgPPd968oq0kwjdb54L2hc4HP0Ah8F1b1spNtgpZ
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - coolify
+
+volumes:
+  pgdata:
 
 networks:
   coolify:
