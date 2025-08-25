@@ -1,5 +1,5 @@
-# Use the official Strapi base image for Node.js v20
-FROM strapi/base:20
+# Use an official Node.js Alpine image
+FROM node:20-alpine
 
 # Set the working directory inside the container
 WORKDIR /opt/app
