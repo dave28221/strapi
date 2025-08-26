@@ -6,8 +6,7 @@ services:
     build: .
     container_name: strapi
     restart: unless-stopped
-    ports:
-      - "1337:1337"
+  
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_HOST: ${DATABASE_HOST}
