@@ -1,23 +1,32 @@
-# Use an official Node.js Alpine image for a small and secure base
-FROM node:20-alpine
 
-# Set the working directory inside the container (using /opt/app is a common convention)
+FROM node:20-alpine AS build
 WORKDIR /opt/app
 
-# Copy package.json and lock files from the repository root
-COPY ./package*.json ./
 
-# Install project dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copy the rest of the Strapi app source code from the repository root
+
 COPY . .
 
-# Build the Strapi application for production
+ENV NODE_ENV=production
 RUN npm run build
 
-# Expose the Strapi port
-EXPOSE 1337
+FROM node:20-alpine
+WORKDIR /opt/app
 
-# Command to start the Strapi application in production mode
+
+COPY package*.json ./
+RUN npm install --production
+
+
+COPY --from=build /opt/app/dist ./dist
+COPY --from=build /opt/app/build ./build
+
+
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
+
+EXPOSE 1337
 CMD ["npm", "run", "start"]
